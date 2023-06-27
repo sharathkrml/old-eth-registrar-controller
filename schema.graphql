@@ -1,6 +1,48 @@
-type ExampleEntity @entity {
-  id: ID!
-  count: BigInt!
-  name: String! # string
-  label: Bytes! # bytes32
+#  event NameRegistered(string name, bytes32 indexed label, address indexed owner, uint cost, uint expires);
+#  event NameRenewed(string name, bytes32 indexed label, uint cost, uint expires);
+#  event NewPriceOracle(address indexed oracle);
+
+type NameRegistered @entity {
+    id: ID!
+    index: BigInt!
+    hash: Bytes!
+
+    name: String!
+    label: Bytes!
+    owner: Bytes!
+    cost: BigInt!
+    expires: BigInt!
+}
+
+type NameRenewed @entity {
+    id: ID!
+    index: BigInt!
+    hash: Bytes!
+
+    name: String!
+    label: Bytes!
+    cost: BigInt!
+    expires: BigInt!
+}
+
+type NewPriceOracle @entity {
+    id: ID!
+    index: BigInt!
+    hash: Bytes!
+
+    oracle: Bytes!
+}
+
+type OwnershipTransferred @entity {
+    id: ID!
+    index: BigInt!
+    hash: Bytes!
+
+    previousOwner: Bytes!
+    newOwner: Bytes!
+}
+
+type Counter @entity {
+    id: ID!
+    count: BigInt!
 }
